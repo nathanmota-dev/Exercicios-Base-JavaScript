@@ -1,0 +1,255 @@
+//Anotações
+
+//Objeto
+let nome;
+let sobrenome;
+let idade;
+let estado;
+
+let pessoa = {
+    nome: 'Nathan',
+    sobrenome: 'Mota',
+    idade: 23,
+    estado: true
+};
+
+console.log(pessoa);
+
+//Array
+
+let amigo = ['Leo', 'Monte Carmelo', '23'];
+console.log(amigo.length); // tamanho da string
+console.log(amigo[1]);
+
+//Função
+
+let corAtual = "Azul";
+function alteraCor(cor, segunda) {
+    corAtual = cor + ' ' + segunda;
+};
+
+console.log(corAtual);
+alteraCor("Verde", "Claro");
+console.log(corAtual);
+
+//Operadores
+
+1 === 1; // jeito certo de comparar
+'1' == 1; //converte automaticamente porém não é recomendado
+
+let pontos = 100;
+let tipo = pontos > 100 ? 'premium' : 'comum';
+console.log(tipo);
+
+//if/else
+let n1, n2;
+if (n1 > n2) {
+    return n1;
+} else {
+    return n2;
+}
+
+//for
+for (let i = 0; i < 5; i++) {
+    console.log("Contagem: " + i);
+}
+
+//while
+let count1 = 0;
+while (count1 < 5) {
+    console.log("Contagem: " + count1);
+    count1++;
+}
+
+//do while
+let count2 = 0;
+do {
+    console.log("Contagem: " + count2);
+    count2++;
+} while (count2 < 5);
+
+//switch
+let day = "segunda";
+
+switch (day) {
+    case "segunda":
+        console.log("Dia de trabalho.");
+        break;
+    case "terça":
+    case "quarta":
+    case "quinta":
+        console.log("Meio da semana.");
+        break;
+    case "sexta":
+        console.log("Quase fim de semana!");
+        break;
+    case "sábado":
+    case "domingo":
+        console.log("Fim de semana!");
+        break;
+    default:
+        console.log("Dia inválido.");
+        break;
+}
+
+//for in - para trabalhar com arrays
+
+const pesso1 = {
+    nome: 'Nathan',
+    idade: 23
+};
+
+for (let indice in pessoa1) {
+    console.log(indice, pessoa.nome, pessoa['idade']); //formas de acessar array diferentes
+}
+
+//outro exemplo:
+
+const cores1 = ['Vermelho', 'Azul', 'Verde'];
+
+for (let indice in cores1) {
+    console.log(indice, cores1[indice]);
+}
+
+//for off - exibe os itens do array
+
+const cores2 = ['Vermelho', 'Azul', 'Verde'];
+
+for (let cor of cores2) {
+    console.log(cor);
+}
+
+//Factory Functions
+const celular3 = {
+    marcaCelular: 'Asus',
+    tamanhoTela: {
+        vertical: 155,
+        horizontal: 75
+    },
+    capacidadeBateria: 5000,
+    ligar: function () {
+        console.log("Fazendo ligação...");
+    }
+}
+
+function criarCelular(marcaCelular, tamanhoTela, capacidadeBateria) {
+    return {
+        marcaCelular,
+        tamanhoTela,
+        capacidadeBateria,
+        ligar() {
+            console.log("Fazendo ligação...");
+        }
+
+    }
+}
+
+//Constructor Functions
+function Celular(marcaCelular, tamanhoTela, capacidadeBateria) {
+    this.marcaCelular = marcaCelular,
+        this, tamanhoTela = tamanhoTela,
+        this.capacidadeBateria = capacidadeBateria,
+        this.ligar = function () {
+            console.log("Fazendo ligação...");
+        }
+}
+
+const celular4 = new Celular('asus', 5.5, 5000);
+console.log(celular);
+
+//Factory Functions e Constructor Functions tem a mesma função
+
+//Clonar Objetos
+
+const celular5 = {
+    marcaCelular: 'Asus',
+    tamanhoTela: {
+        vertical: 155,
+        horizontal: 75
+    },
+    capacidadeBateria: 5000,
+    ligar: function () {
+        console.log("Fazendo ligação...");
+    }
+}
+
+const novoObjeto = Object.assign({
+    //é possível adicionar novas propriedas para esse objeto aqui
+}, celular);
+console.log(novoObjeto);
+
+//Outra forma de clonar obejto:
+
+const objeto2 = { ...celular };
+console.log(objeto2);
+
+//Math
+Math.random(); //gera um número aleatório, é possível definir um range assim: Math.random(min, max);
+Math.max(3, 6, 7, 11); //imprime o maior valor
+Math.min(2, 5, 6, 9) //imprime o menor valor
+
+//Tratamendo de String
+
+//tipo Primitivo
+const mensagem = 'minha primeira mensagem';
+//tipo Objeto
+const mensagem2 = new String('bom dia');
+//tamanho de uma string
+mensagem.length;
+//verificar se tem uma palavra na string
+mensagem.includes('primeira')
+//verificar se uma string inicia com uma palavra
+mensagem.startsWith('verde')
+//verificar se uma string termina com uma palavra
+mensagem.endsWith('mensagem')
+//contar o caracter que inicia uma palavra
+mensagem.indexOf('primeira')
+//alterar uma palavra da string
+mensagem.replace('minha', 'sua')
+//tira os espaços excedentes no inicio ou final
+mensagem.trim()
+//quebrar uma string com espaços
+mensagem.split(' ')
+
+//Template literal - serve para quando for necessario usar um '' dentro da string
+// para não precisar concatenar essa string
+const outra = `oi isso é minha 'primeira' mensagem`;
+console.log(outra);
+
+//sem usar o template literal ficaria assim:
+const outra2 = 'Oi isso é minha primeira\n' + '\'primeira\' mensagem';
+console.log(outra2);
+
+//ou seja, o template literal serve para deixar o código mais clean e manter a formatação
+//exemplo de uso real
+
+const nome4 = 'Andre';
+
+const email =
+    `Ola ${nome}, a conta é ${2 + 3}.
+
+Obrigado por ser inscrever no canal!
+
+Para acompanhar os videos não se esqueça de ativar o sino.
+
+Obrigado.
+
+att,
+
+Nathan.
+`;
+console.log(email); // a formatação é mantida
+
+//Lidando com Date
+
+const data1 = new Date();
+const data2 = new Date('August 17 2023 09:30');
+const data3 = new Date(2023, 0o7, 17, 9, 30);
+//alterar valor do ano
+date3.setFullYear(2030);
+//converter de data para string
+date2.toDateString();
+//zona temporal
+date1.toTimeString();
+//forma que voce ve data no BD
+date2.toISOString(); 
